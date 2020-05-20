@@ -90,12 +90,16 @@ def destroy_machine(ticket_one, ticket_two, ticket_three, ticket_four,
 
         if jira_ticket_one is not '':
             pprint.pprint("Deleting the following machine: " + jira_ticket_one)
+            server.delete_job(jira_ticket_one)
         if jira_ticket_two is not '':
             pprint.pprint("Deleting the following machine: " + jira_ticket_two)
+            server.delete_job(jira_ticket_two)
         if jira_ticket_three is not '':
             pprint.pprint("Deleting the following machine: " + jira_ticket_three)
+            server.delete_job(jira_ticket_three)
         if jira_ticket_four is not '':
             pprint.pprint("Deleting the following machine: " + jira_ticket_four)
+            server.delete_job(jira_ticket_four)
 
 
 def test_funct(jira_ticket, user_name="dpristavu", user_password="uNIgOpoloCONgLOrLi",

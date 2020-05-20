@@ -105,7 +105,6 @@ class QaDeleteServersPage(tk.Frame):
 
         qa_page = ttk.Button(self, text="QA Job page",
                              command=lambda: controller.show_frame(QaPage))
-
         qa_job_button = ttk.Button(self, text=">Delete targeted jobs<", command=self.destroy_jenkins_machines)
 
         jira_ticket_one = tk.Label(self, text="Jira Ticket 1: ")
