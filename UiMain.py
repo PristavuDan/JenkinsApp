@@ -1,5 +1,6 @@
 import tkinter as tk
 import Main
+import asyncio
 from tkinter import ttk
 
 
@@ -44,6 +45,7 @@ class QaPage(tk.Frame):
         pynoceros_branch = tk.Label(self, text="Pynoceros Branch")
         meta_branch = tk.Label(self, text="Meta Branch")
         containers_branch = tk.Label(self, text="Containers Branch")
+        preflight_branch = tk.Label(self, text="Preflight Branch")
 
         self.firstbooted = ttk.Checkbutton(self, text="Firstbooted")
         self.jira_ticket_input = ttk.Entry(self)
@@ -53,6 +55,7 @@ class QaPage(tk.Frame):
         self.pynoceros_input = ttk.Entry(self)
         self.meta_branch_input = ttk.Entry(self)
         self.containers_input = ttk.Entry(self)
+        self.preflight_input = ttk.Entry(self)
 
         jira_ticket.grid(row=0, sticky=tk.E)
         feeds_branch.grid(row=1, sticky=tk.E)
@@ -61,6 +64,7 @@ class QaPage(tk.Frame):
         pynoceros_branch.grid(row=4, sticky=tk.E)
         meta_branch.grid(row=5, sticky=tk.E)
         containers_branch.grid(row=6, sticky=tk.E)
+        preflight_branch.grid(row=7, sticky=tk.E)
         self.firstbooted.grid(columnspan=2)
 
         qa_job_button.grid(columnspan=2)
@@ -73,6 +77,7 @@ class QaPage(tk.Frame):
         self.pynoceros_input.grid(row=4, column=1)
         self.meta_branch_input.grid(row=5, column=1)
         self.containers_input.grid(row=6, column=1)
+        self.preflight_input.grid(row=7, column=1)
 
     def call_build_jenkins(self):
         ticket_number = self.jira_ticket_input.get()
@@ -82,6 +87,7 @@ class QaPage(tk.Frame):
         pynoceros_branch = self.pynoceros_input.get()
         meta_branch = self.meta_branch_input.get()
         containers_branch = self.containers_input.get()
+        preflight_branch = self.preflight_input.get()
         first_booted = self.firstbooted.state()
 
         try:
@@ -105,7 +111,8 @@ class QaDeleteServersPage(tk.Frame):
 
         qa_page = ttk.Button(self, text="QA Job page",
                              command=lambda: controller.show_frame(QaPage))
-        qa_job_button = ttk.Button(self, text=">Delete targeted jobs<", command=self.destroy_jenkins_machines)
+        qa_job_button = ttk.Button(self, text=">Delete targeted jobs<",
+                                   command=self.destroy_jenkins_machines)
 
         jira_ticket_one = tk.Label(self, text="Jira Ticket 1: ")
         self.ticket_input_one = ttk.Entry(self)
