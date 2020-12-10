@@ -16,13 +16,13 @@ class JenkinsUI(tk.Tk):
         self.frames = {}
 
         for used_frame in (QaPage, QaDeleteServersPage):
-            frame = self.frames[used_frame] = used_frame(container, self)
-            frame.grid(row=0, column=0, sticky='nsew')
+            self.frames[used_frame] = used_frame(container, self)
 
         self.show_frame(QaPage)
 
     def show_frame(self, cont):
         frame = self.frames[cont]
+        frame.grid(row=0, column=0, sticky='nsew')
         frame.tkraise()
 
 
@@ -31,8 +31,8 @@ class QaPage(tk.Frame):
         tk.Frame.__init__(self, parent)
 
         qa_delete_jobs_page = ttk.Button(self, text='Delete QA jobs page',
-                                            command=lambda: controller.
-                                            show_frame(QaDeleteServersPage))
+                                         command=lambda: controller.
+                                         show_frame(QaDeleteServersPage))
 
         qa_job_button = ttk.Button(self, text='>Run QA job<', command=self.call_build_jenkins)
 
@@ -109,9 +109,9 @@ class QaDeleteServersPage(tk.Frame):
         tk.Frame.__init__(self, parent)
 
         qa_page = ttk.Button(self, text='QA Job page',
-                                command=lambda: controller.show_frame(QaPage))
+                             command=lambda: controller.show_frame(QaPage))
         qa_job_button = ttk.Button(self, text='>Delete targeted jobs<',
-                                      command=self.destroy_jenkins_machines)
+                                   command=self.destroy_jenkins_machines)
 
         jira_ticket_one = tk.Label(self, text='Jira Ticket 1: ')
         self.ticket_input_one = ttk.Entry(self)

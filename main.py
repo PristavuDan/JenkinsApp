@@ -19,12 +19,12 @@ def build_using_qa(jira_ticket, user_name='dpristavu', user_password='uNIgOpoloC
     jira_ticket = jira_ticket.upper()
 
     feeds_branch = feeds_branch or development_branch
-    firstboot_branch = feeds_branch or development_branch
-    frontend_branch = feeds_branch or development_branch
-    meta_branch = feeds_branch or development_branch
-    pynoceros_branch = feeds_branch or development_branch
-    containers_branch = feeds_branch or development_branch
-    preflight_branch = feeds_branch or development_branch
+    firstboot_branch = firstboot_branch or development_branch
+    frontend_branch = frontend_branch or development_branch
+    meta_branch = meta_branch or development_branch
+    pynoceros_branch = pynoceros_branch or development_branch
+    containers_branch = containers_branch or development_branch
+    preflight_branch = preflight_branch or development_branch
 
     pprint.pprint('Jira ticket: ' + jira_ticket)
     pprint.pprint('Feeds branch: ' + feeds_branch)
