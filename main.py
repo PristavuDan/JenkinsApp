@@ -65,10 +65,10 @@ def destroy_machine(ticket_one, ticket_two, ticket_three, ticket_four,
     tickets = [ticket_one.upper(), ticket_two.upper(), ticket_three.upper(), ticket_four.upper()]
 
     if set(tickets) == {''}:
-        pprint.pprint("A jira ticket was not provided")
+        pprint.pprint('A jira ticket was not provided')
         return
 
     for ticket in tickets:
         if ticket is not '':
-            pprint.pprint("Deleting the following machine: " + ticket)
+            pprint.pprint('Deleting the following machine: ' + ticket)
             destroy_job(ticket, server)
